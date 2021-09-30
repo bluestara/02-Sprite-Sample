@@ -1,7 +1,12 @@
 #include "Map.h"
-Map::Map(int id, LPCWSTR filePath_texture, LPCWSTR filePath_data, int num_row_on_texture, int num_col_on_texture, int num_row_on_tilemap, int num_col_on_tilemap, int tileset_width, int tileset_height)
+Map* Map::__instance = NULL;
+Map::Map()
 {
+	
+}
 
+void Map::Load(int id, LPCWSTR filePath_texture, LPCWSTR filePath_data, int num_row_on_texture, int num_col_on_texture, int num_row_on_tilemap, int num_col_on_tilemap, int tileset_width, int tileset_height)
+{
 	this->filePath_texture = filePath_texture;
 	this->filePath_data = filePath_data;
 
@@ -74,6 +79,12 @@ void Map::Render()
 			sprites->Get(map[i][j] + id)->Draw(x, y);
 		}
 	}
+}
+
+Map* Map::GetInstance()
+{
+	if (__instance == NULL) __instance = new Map();
+	return __instance;
 }
 
 Map::~Map()

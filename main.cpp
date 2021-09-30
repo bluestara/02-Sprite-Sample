@@ -62,7 +62,7 @@
 #define MARIO_START_VX 0.1f
 CBrick1* brick1;
 
-Map* map;
+Map* map = Map::GetInstance();
 #define BRICK_X 0.0f
 #define BRICK_Y + 150.0f
 #define NUM_BRICKS 50
@@ -94,7 +94,7 @@ void LoadResources()
 	//textures->Add(ID_ENEMY_TEXTURE, TEXTURE_PATH_ENEMIES, D3DCOLOR_XRGB(156, 219, 239));
 	textures->Add(ID_TEX_MISC, TEXTURE_PATH_MISC);
 	//textures->Add(99, Map_Path);
-	 map = new Map(30,Map_Path,Maptxt_Path, 11, 11, 27, 208, 16, 16);
+	 map->Load(30,Map_Path,Maptxt_Path, 11, 11, 27, 208, 16, 16);
 
 	CSprites * sprites = CSprites::GetInstance();
 
