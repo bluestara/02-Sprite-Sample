@@ -1,4 +1,5 @@
 #include "Map.h"
+#define SCREEN_WIDTH 800
 Map* Map::__instance = NULL;
 Map::Map()
 {
@@ -64,11 +65,11 @@ void Map::LoadResources()
 
 void Map::Render()
 {
-	int firstcol = 0 / tileset_width;
-	int lastcol = firstcol + (800 / tileset_width);
-	for (UINT i = 0; i < 27; i++)
+	int firstcol = 0;
+	int lastcol = firstcol + (SCREEN_WIDTH  / tileset_width);
+	for (UINT i = 0; i < num_row_on_tilemap; i++)
 	{
-		for (UINT j = 0; j <= lastcol; j++)
+		for (UINT j = firstcol; j <= lastcol; j++)
 		{
 			float x = tileset_width * (j - firstcol);
 			if (x != 0)
